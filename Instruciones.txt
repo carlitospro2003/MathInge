@@ -1,0 +1,116 @@
+EJECUTAR ESTE COMANDO PARA LAS DEPEDENCIAS 
+pip install -r requirements.txt
+
+
+
+=========================GUIA DE USO EULER MEJORADO========================================
+
+SIMBOLO       DESCRIPCION				EJEMPLO 
+X	      ariable independiente (eje X)		x** representa x a la potencia
+y             Variable dependiente (solución)		x*y representa 2y
+exp(a)	      Exponencial e elevado a			exp(-2*x) representa e elevado a -2x	      
+*	      Multiplicación				2*x representa 2x
+** 	      Potencias					x**3 representa x al cubo
+- y + 	      operaciones básicas 			x**2 - y representa x al cuadrado - y
+
+¿QUE INGRESAR EN CADA CAMPO?
+1. Ecuación Diferencial (en términos de x y)
+	Debe ingresarse la ecuación ya despejada en la forma
+		y' = f(x,y)
+	no debe incluir y', Derivate(), ni el signo =
+	Ejemplo para la ecuación
+		y' + 2y = x elevado al cubo e elevado -2x
+
+	FORMATO A INGRESAR
+	x**3 * exp(-2*x) - 2*y
+
+2. Valor Inicial de x(x0)
+	es el valor inicial de la variable x
+	ejemplo: si x(0) = 1, ingresar 1
+
+3. Valor inicial de y (y0)
+	es el valor inicial de la función y(x)
+	ejemplo si y(0) = 2, ingresar 2
+
+4. Tamaño de peso (h)
+	es el incremento en x que define la precisión del método
+	ejemplo: para un paso de h=0.1, ingresar 0.1
+
+5. Valor final de x
+	es el valor hasta el cual se calculara la solución
+	ejemplo si se requiere resolver hasta x=4, ingresar 4
+
+===========================================================================================
+
+=========================GUIA DE USO Newton Raphson========================================
+
+SIMBOLO       DESCRIPCION				EJEMPLO 
+X	      ariable independiente (eje X)		x** representa x a la potencia
+y             Variable dependiente (solución)		x*y representa 2y
+exp(a)	      Exponencial e elevado a			exp(-2*x) representa e elevado a -2x	      
+*	      Multiplicación				2*x representa 2x
+** 	      Potencias					x**3 representa x al cubo
+- y + 	      operaciones básicas 			x**2 - y representa x al cuadrado - y
+sin(x) 	      función seno 				sin(x) representa sin(x)
+cos(x)        función coseno  				cos(x) representadas cos(x)
+
+¿QUE INGRESAR EN CADA CAMPO?
+1. ecuación (en términos de x)
+	ingresar la ecuación en forma funcional f(x) sin igualarla a cero
+	no debe incluir f(x) = ni el signo = 0
+	ejemplo para la ecuación
+		x al cubo - x -2 = 0
+
+	FORMATO A INGRESAR
+		x**3 - x - 2
+
+x₀ (Valor inicial)
+	Es el punto de inicio del método.
+	Ejemplo: Si el método comienza en 𝑥0 = 1.5, ingresar 1.5.
+
+Tolerancia
+	Es el criterio de parada basado en la diferencia entre iteraciones.
+	Ejemplo: Para una tolerancia de 0.0001, ingresar 0.0001.
+
+Precisión (decimales)
+	Número de decimales en los cálculos y resultados.
+	Ejemplo: Para 5 decimales, ingresar 5.
+
+===========================================================================================
+
+=========================GUIA DE USO Orden Runge Kutta=====================================
+
+SIMBOLO       DESCRIPCION				EJEMPLO 
+X	      ariable independiente (eje X)		x** representa x a la potencia
+y             Variable dependiente (solución)		x*y representa 2y
+exp(a)	      Exponencial e elevado a			exp(-2*x) representa e elevado a -2x	      
+*	      Multiplicación				2*x representa 2x
+** 	      Potencias					x**3 representa x al cubo
+- y + 	      operaciones básicas 			x**2 - y representa x al cuadrado - y
+sin(x) 	      función seno 				sin(x) representa sin(x)
+cos(x)        función coseno  				cos(x) representadas cos(x)
+
+SE DEBE INGRESAR
+ X + Y
+
+x₀ (Valor inicial)
+	Es el valor inicial de x en el intervalo de integración.
+	Ejemplo: Si la ecuación comienza en 𝑥0 = 0, ingresar 0.
+
+y₀ (Valor inicial de y)
+	Es el valor inicial de y, es decir, 𝑦(𝑥0)
+
+	Ejemplo: Si 𝑦(0) = 1, ingresar 1.
+
+h (Paso de iteración)
+	Tamaño del incremento en x por cada iteración.
+	Ejemplo: Si se usa un paso de ℎ = 0.1, ingresar 0.1.
+
+x final
+	Es el valor final de x hasta donde se calculará 𝑦(𝑥)
+	Ejemplo: Si se desea calcular  y hasta  𝑥 = 2 , ingresar 2.
+
+
+
+
+
