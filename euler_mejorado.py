@@ -55,37 +55,43 @@ def calcular():
 root = tk.Tk()
 root.title("Método de Euler Mejorado")
 
+# Definir una fuente más grande
+font_label = ("Arial", 12)
+font_entry = ("Arial", 12)
+font_button = ("Arial", 12)
+font_text = ("Arial", 12)
+
 frame = tk.Frame(root)
 frame.pack(pady=10)
 
-tk.Label(frame, text="Ecuación (en términos de x e y):").grid(row=0, column=0)
-ecuacion_entry = tk.Entry(frame, width=30)
+tk.Label(frame, text="Ecuación (en términos de x e y):", font=font_label).grid(row=0, column=0)
+ecuacion_entry = tk.Entry(frame, width=30, font=font_entry)
 ecuacion_entry.grid(row=0, column=1)
 
-tk.Label(frame, text="x0:").grid(row=1, column=0)
-x0_entry = tk.Entry(frame)
+tk.Label(frame, text="x0:", font=font_label).grid(row=1, column=0)
+x0_entry = tk.Entry(frame, font=font_entry)
 x0_entry.grid(row=1, column=1)
 
-tk.Label(frame, text="y0:").grid(row=2, column=0)
-y0_entry = tk.Entry(frame)
+tk.Label(frame, text="y0:", font=font_label).grid(row=2, column=0)
+y0_entry = tk.Entry(frame, font=font_entry)
 y0_entry.grid(row=2, column=1)
 
-tk.Label(frame, text="h (paso):").grid(row=3, column=0)
-h_entry = tk.Entry(frame)
+tk.Label(frame, text="h (paso):", font=font_label).grid(row=3, column=0)
+h_entry = tk.Entry(frame, font=font_entry)
 h_entry.grid(row=3, column=1)
 
-tk.Button(frame, text="Calcular", command=calcular).grid(row=4, columnspan=2, pady=5)
+tk.Button(frame, text="Calcular", font=font_button, command=calcular).grid(row=4, columnspan=2, pady=5)
 
 columns = ("Paso", "x", "y", "k1", "k2", "y_next")
-tree = ttk.Treeview(root, columns=columns, show="headings")
+tree = ttk.Treeview(root, columns=columns, show="headings", style="Treeview")
 for col in columns:
-    tree.heading(col, text=col)
+    tree.heading(col, text=col, anchor="center")
     tree.column(col, anchor="center")
 tree.pack(pady=10)
 
-procedimiento_label = tk.Label(root, text="Procedimiento:")
+procedimiento_label = tk.Label(root, text="Procedimiento:", font=font_label)
 procedimiento_label.pack()
-procedimiento_text = tk.Text(root, height=10, width=80)
+procedimiento_text = tk.Text(root, height=10, width=80, font=font_text)
 procedimiento_text.pack(pady=5)
 
 root.mainloop()
