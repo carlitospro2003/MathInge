@@ -1,5 +1,4 @@
 import sympy as sp
-import pandas as pd
 import tkinter as tk
 from tkinter import ttk, messagebox
 
@@ -41,16 +40,27 @@ def calcular():
         
         resultados, procedimiento = euler_mejorado(expr, x0, y0, h)
         
+        # Limpiar resultados anteriores en la tabla
         for row in tree.get_children():
             tree.delete(row)
         
+        # Insertar los nuevos resultados
         for res in resultados:
             tree.insert("", "end", values=res)
         
+        # Limpiar el área de procedimiento y agregar el nuevo procedimiento
         procedimiento_text.delete("1.0", tk.END)
         procedimiento_text.insert(tk.END, "\n".join(procedimiento))
     except Exception as e:
         messagebox.showerror("Error", f"Ocurrió un error: {e}")
+
+def limpiar_resultados():
+    # Limpiar tabla de resultados
+    for row in tree.get_children():
+        tree.delete(row)
+    
+    # Limpiar área de procedimiento
+    procedimiento_text.delete("1.0", tk.END)
 
 root = tk.Tk()
 root.title("Método de Euler Mejorado")
@@ -80,7 +90,9 @@ tk.Label(frame, text="h (paso):", font=font_label).grid(row=3, column=0)
 h_entry = tk.Entry(frame, font=font_entry)
 h_entry.grid(row=3, column=1)
 
+# Botón para calcular y limpiar resultados
 tk.Button(frame, text="Calcular", font=font_button, command=calcular).grid(row=4, columnspan=2, pady=5)
+tk.Button(frame, text="Limpiar Resultado", font=font_button, command=limpiar_resultados).grid(row=5, columnspan=2, pady=5)
 
 columns = ("Paso", "x", "y", "k1", "k2", "y_next")
 tree = ttk.Treeview(root, columns=columns, show="headings", style="Treeview")

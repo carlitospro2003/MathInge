@@ -4,6 +4,8 @@ from tkinter import ttk, messagebox
 
 def runge_kutta_4(f_expr, x0, y0, h, x_final):
     x, y = sp.symbols('x y')
+    
+    # Usamos lambdify para hacer la función numérica
     f = sp.lambdify((x, y), f_expr, 'numpy')
     
     n = int((x_final - x0) / h)  # Calcula el número de iteraciones necesarias
@@ -11,11 +13,13 @@ def runge_kutta_4(f_expr, x0, y0, h, x_final):
     procedimiento = []
     
     for i in range(n + 1):
+        # Evaluar las funciones numéricamente para k1, k2, k3, k4
         k1 = f(x0, y0)
         k2 = f(x0 + h/2, y0 + (h/2) * k1)
         k3 = f(x0 + h/2, y0 + (h/2) * k2)
         k4 = f(x0 + h, y0 + h * k3)
         
+        # Calcular y_next
         y_next = y0 + (h / 6) * (k1 + 2*k2 + 2*k3 + k4)
         
         procedimiento.append(f"Paso {i+1}:")
@@ -44,16 +48,27 @@ def calcular():
         
         resultados, procedimiento = runge_kutta_4(expr, x0, y0, h, x_final)
         
+        # Limpiar resultados anteriores en la tabla
         for row in tree.get_children():
             tree.delete(row)
         
+        # Insertar los nuevos resultados
         for res in resultados:
             tree.insert("", "end", values=res)
         
+        # Limpiar el área de procedimiento y agregar el nuevo procedimiento
         procedimiento_text.delete("1.0", tk.END)
         procedimiento_text.insert(tk.END, "\n".join(procedimiento))
     except Exception as e:
         messagebox.showerror("Error", f"Ocurrió un error: {e}")
+
+def limpiar_resultados():
+    # Limpiar tabla de resultados
+    for row in tree.get_children():
+        tree.delete(row)
+    
+    # Limpiar área de procedimiento
+    procedimiento_text.delete("1.0", tk.END)
 
 root = tk.Tk()
 root.title("Método de Runge-Kutta de 4to Orden")
@@ -88,6 +103,9 @@ x_final_entry = tk.Entry(frame, font=font_entry)
 x_final_entry.grid(row=4, column=1)
 
 tk.Button(frame, text="Calcular", font=font_button, command=calcular).grid(row=5, columnspan=2, pady=5)
+
+# Botón para limpiar los resultados
+tk.Button(frame, text="Limpiar Resultado", font=font_button, command=limpiar_resultados).grid(row=6, columnspan=2, pady=5)
 
 columns = ("Paso", "x", "y", "k1", "k2", "k3", "k4", "y_next")
 tree = ttk.Treeview(root, columns=columns, show="headings", style="Treeview")
